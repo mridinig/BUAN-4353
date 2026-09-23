@@ -1,7 +1,22 @@
 # BUAN-4353
 Project 1
 
-To update product with most recent verison:
+To switch from branch to main: git switch <branch-name>
+
+
+To update branch with main
+git switch <branch-name>
+git pull origin main
+
+
+Updating main with current changes in personal workspace/branch
+git switch main
+git pull origin main
+git merge your-branch-name
+git push origin name
+
+
+To update file with most recent verison:
 git fetch
 git merge
 
