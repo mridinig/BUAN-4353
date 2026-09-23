@@ -17,6 +17,8 @@ To switch from branch to main
 To update branch with main
     git switch <branch-name>
     git pull origin main
+    git add.
+    git commit -m ""
     git push
 
 
