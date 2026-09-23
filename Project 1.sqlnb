@@ -1,0 +1,804 @@
+cells:
+  - kind: 1
+    value: "### Historical sales opportunity performance analysis\r
+
+      \r
+
+      #### **Project overview**\r
+
+      <small>\r
+
+      You are a business analyst supporting the sales leadership team of a
+      fictional B2B technology company. Leadership wants to better understand
+      historical sales performance across completed opportunities.\r
+
+      \r
+
+      Your task is to use the company’s Oracle database to investigate where
+      sales outcomes differ across customers, opportunity types, sales
+      organization, and products. You will communicate findings and recommend
+      actions that sales leadership should investigate, monitor, or improve.\r
+
+      \r
+
+      This project uses descriptive and diagnostic analytics only. You will not
+      build predictive models, use logistic regression, score opportunities, or
+      recommend which individual live opportunities to prioritize.\r
+
+      \r
+
+      <b>Business scenario</b><br>\r
+
+      Sales leadership has many completed sales opportunities in its CRM system.
+      Management wants to understand:\r
+
+      - Where did historical sales performance differ, and what should sales
+      leadership investigate, monitor, or improve?\r
+
+      \r
+
+      Your analysis should help leadership understand historical patterns in win
+      rates, completed sales-cycle duration, product mix, and sales activity.
+      Your conclusions must be supported by evidence from the database.\r
+
+      \r
+
+      A finding of “no meaningful difference” is a valid result when supported
+      by your analysis.\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "#### **S - Specify the question**\r
+
+      <small>\r
+
+      <b>Primary business question</b><br>\r
+
+      Among completed opportunities, where did historical win rate, sales-cycle
+      duration, and product mix differ, and what should sales leadership
+      investigate, monitor, or improve?\r
+
+      \r
+
+      \r
+
+      You must also develop two supporting analytical questions.\r
+
+      \r
+
+      Examples include:\r
+
+      - How do win rates differ by customer industry, customer geography, or
+      account revenue band?\r
+
+      - How do outcomes differ by opportunity type, business unit, sales team,
+      or owner?\r
+
+      - How does completed sales-cycle duration differ between won and lost
+      opportunities?\r
+
+      - How do push counts differ between won and lost opportunities?\r
+
+      - Which products appear most often in won and lost opportunities?\r
+
+      - Do opportunities containing multiple products differ from single-product
+      opportunities?\r
+
+      \r
+
+      You may develop other supporting questions if they are answerable with the
+      available data. Your analysis may identify associations or differences
+      between groups. Do not claim that a factor caused an outcome unless the
+      data and method support a causal conclusion.\r
+
+      <small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Analytical question #1</b><br>\r
+
+      <b>Question:</b> [Your analytical question.]<br>\r
+
+      <b>Relevant KPI or comparison:</b> [State the metric or comparison that
+      will answer this question.]<br>\r
+
+      <b>Relevance:</b> [How the analytical question is relevant to the primary
+      business question.]<br>\r
+
+      <b>Tableau workbook sheet name:</b> [Insert the Tableau workbook sheet
+      name associated with exploring and answering this analytical.]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 2
+    value: "/*\r
+
+      Analytical question # 1 SQL\r
+
+      This should be a SQL query that returns the data\r
+
+      necessary to answer the analytical question.\r
+
+      You'll need to create a visualization based on the query results\r
+
+      that effectively communicates the insights derived from the data.\r
+
+      */\r
+
+      -- Place your query below this line.\r\n"
+    languageId: oracle-sql
+  - kind: 1
+    value: "<small>\r
+
+      <b>Analytical question #1</b><br>\r
+
+      <b>Question:</b> [Your analytical question.]<br>\r
+
+      <b>Relevant KPI or comparison:</b> [State the metric or comparison that
+      will answer this question.]<br>\r
+
+      <b>Relevance:</b> [How the analytical question is relevant to the primary
+      business question.]<br>\r
+
+      <b>Tableau workbook sheet name:</b> [Insert the Tableau workbook sheet
+      name associated with exploring and answering this analytical.]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 2
+    value: "/*\r
+
+      Analytical question # 2 SQL\r
+
+      This should be a SQL query that returns the data\r
+
+      necessary to answer the analytical question.\r
+
+      You'll need to create a visualization based on the query results\r
+
+      that effectively communicates the insights derived from the data.\r
+
+      */\r
+
+      -- Place your query below this line.\r\n"
+    languageId: oracle-sql
+  - kind: 1
+    value: "<small>\r
+
+      <b>Anticipated data limitations relevant to your analytical
+      questions</b><br>\r
+
+      [Anticipated data limitations]\r
+
+      <small>"
+    languageId: markdown
+  - kind: 1
+    value: "#### **O - Obtain the data**\r
+
+      \r
+
+      <small>\r
+
+      <b>Data source</b><br>\r
+
+      You will work with the fictional Salesforce-style data in the
+      DATABASE_FUNDAMENTALS Oracle schema.<br>\r
+
+      \r
+
+      <b>Relevant tables may include:</b>\r
+
+      \r
+
+      <table>\r
+
+      \  <thead>\r
+
+      \    <tr>\r
+
+      \      <th>Table</th>\r
+
+      \      <th>General content</th>\r
+
+      \    </tr>\r
+
+      \  </thead>\r
+
+      \  <tbody>\r
+
+      \    <tr>\r
+
+      \      <td>OPPORTUNITY</td>\r
+
+      \      <td>Historical sales opportunities and final outcomes</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>OPPORTUNITY_LINE_ITEM</td>\r
+
+      \      <td>Products and quantities associated with opportunities</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>ACCOUNT</td>\r
+
+      \      <td>Customer/account characteristics</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>OWNER</td>\r
+
+      \      <td>Sales-owner characteristics</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>PRODUCT</td>\r
+
+      \      <td>Product names and catalog prices</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>BUSINESS_UNIT</td>\r
+
+      \      <td>Sales business units</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>SALES_TEAM</td>\r
+
+      \      <td>Sales-team hierarchy</td>\r
+
+      \    </tr>\r
+
+      \  </tbody>\r
+
+      </table><br>\r
+
+      You do not need to use every table. Select the tables and fields needed to
+      answer your questions.\r
+
+      <b>\r
+
+      It is critical that you understand the grain of each table and validate
+      that your JOINs do not unintentionally change the meaning of your measures
+      or cause them to return the incorrect results.\r
+
+      </b>\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Evidence of proper exploration and understanding of tables used for
+      analysis</b>\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small><b>Fully qualified table 1 name</b><br>\r
+
+      <b>Grain:</b> [How the KPI is calculated in plain-English.]<br>\r
+
+      <b>Primary key:</b> [The primary key of the table.]<br>\r
+
+      <b>Foreign key(s):</b> [The fields serving as foreign keys within the
+      table, if applicable. Populate this section with \"Not applicable\" if no
+      foreign keys exist within the table.]<br>\r
+
+      <b>Relationship(s):</b> [How the KPI is calculated in
+      plain-English.]<br>\r
+
+      <b>Number of rows:</b> [The number of rows within the table.]<br>\r
+
+      <b>Number of duplicates:</b> [The number of duplicates identified within
+      the table.]<br>\r
+
+      <b>Number of nulls:</b> [The number of nulls for each field used for your
+      analysis.]<br>\r
+
+      <b>Date-range:</b> [The minimum and maximum date of data available within
+      a table. If a table does not contain a date field, populate with \"Not
+      applicable.\"]\r
+
+      \r
+
+      <b>Fully qualified table 1 name</b><br>\r
+
+      <b>Grain:</b> [How the KPI is calculated in plain-English.]<br>\r
+
+      <b>Primary key:</b> [The primary key of the table.]<br>\r
+
+      <b>Foreign key(s):</b> [The fields serving as foreign keys within the
+      table, if applicable. Populate this section with \"Not applicable\" if no
+      foreign keys exist within the table.]<br>\r
+
+      <b>Relationship(s):</b> [How the KPI is calculated in
+      plain-English.]<br>\r
+
+      <b>Number of rows:</b> [The number of rows within the table.]<br>\r
+
+      <b>Number of duplicates:</b> [The number of duplicates identified within
+      the table.]<br>\r
+
+      <b>Number of nulls:</b> [The number of nulls for each field used for your
+      analysis.]<br>\r
+
+      <b>Date-range:</b> [The minimum and maximum date of data available within
+      a table. If a table does not contain a date field, populate with \"Not
+      applicable.\"]\r
+
+      \r
+
+      <b>Fully qualified table 1 name</b><br>\r
+
+      <b>Grain:</b> [How the KPI is calculated in plain-English.]<br>\r
+
+      <b>Primary key:</b> [The primary key of the table.]<br>\r
+
+      <b>Foreign key(s):</b> [The fields serving as foreign keys within the
+      table, if applicable. Populate this section with \"Not applicable\" if no
+      foreign keys exist within the table.]<br>\r
+
+      <b>Relationship(s):</b> [How the KPI is calculated in
+      plain-English.]<br>\r
+
+      <b>Number of rows:</b> [The number of rows within the table.]<br>\r
+
+      <b>Number of duplicates:</b> [The number of duplicates identified within
+      the table.]<br>\r
+
+      <b>Number of nulls:</b> [The number of nulls for each field used for your
+      analysis.]<br>\r
+
+      <b>Date-range:</b> [The minimum and maximum date of data available within
+      a table. If a table does not contain a date field, populate with \"Not
+      applicable.\"]\r
+
+      \r
+
+      <b>Fully qualified table 1 name</b><br>\r
+
+      <b>Grain:</b> [How the KPI is calculated in plain-English.]<br>\r
+
+      <b>Primary key:</b> [The primary key of the table.]<br>\r
+
+      <b>Foreign key(s):</b> [The fields serving as foreign keys within the
+      table, if applicable. Populate this section with \"Not applicable\" if no
+      foreign keys exist within the table.]<br>\r
+
+      <b>Relationship(s):</b> [How the KPI is calculated in
+      plain-English.]<br>\r
+
+      <b>Number of rows:</b> [The number of rows within the table.]<br>\r
+
+      <b>Number of duplicates:</b> [The number of duplicates identified within
+      the table.]<br>\r
+
+      <b>Number of nulls:</b> [The number of nulls for each field used for your
+      analysis.]<br>\r
+
+      <b>Date-range:</b> [The minimum and maximum date of data available within
+      a table. If a table does not contain a date field, populate with \"Not
+      applicable.\"]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Data limitations</b><br>\r
+
+      Keep these limitations in mind:\r
+
+      <ul>\r
+
+      \  <li>All opportunities in the supplied data are already closed.</li>\r
+
+      \  <li>CLOSED_WON_REASON is recorded after the outcome and must not be
+      used as a driver of success.</li>\r
+
+      \  <li>AGE represents final completed sales-cycle duration and may be used
+      only for historical comparisons.</li>\r
+
+      \  <li>Product price and quantity do not establish recognized revenue,
+      transaction revenue, discounts, or currency-adjusted revenue.</li>\r
+
+      \  <li>Product prices are denominated in USD. For this project, calculate
+      line-item revenue as quantity multiplied by product price. Calculate
+      opportunity revenue as the sum of line-item revenue for that
+      opportunity.</li>\r
+
+      \  <li>Account region and owner region represent different concepts:
+      customer geography and sales coverage geography.</li>\r
+
+      \  <li>Some calendar years contain partial data. Use comparable time
+      periods when making time-based comparisons.</li>\r
+
+      </ul>\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "#### **A - Analyze the data**\r
+
+      <small>\r
+
+      <p><b>Required baseline analysis</b><br>All students must calculate via
+      SQL:</p>\r
+
+      <ul>\r
+
+      \  <li>Total completed opportunities</li>\r
+
+      \  <li>Number of won opportunities</li>\r
+
+      \  <li>Number of lost opportunities</li>\r
+
+      \  <li>Historical win rate</li>\r
+
+      \  <li>Median completed sales-cycle duration</li>\r
+
+      \  <li>Median completed sales-cycle duration by outcome</li>\r
+
+      \  <li>Opportunity volume and win rate for at least one business
+      dimension</li>\r
+
+      \  <li>Product mix and either average line-item count or average number of
+      distinct products per opportunity. Product-mix guidance: Product mix
+      refers to the individual products included in completed opportunities.
+      Analyze product presence, quantity, and the number of distinct products or
+      opportunity line items per opportunity. Because an opportunity may contain
+      multiple products, product-presence groups overlap and should not be added
+      together as mutually exclusive categories.</li>\r
+
+      \  <li>Total opportunity revenue, won revenue and lost revenue</li>\r
+
+      \  <li>Average won opportunity value</li>\r
+
+      </ul>\r
+
+      <p>Report the count alongside every rate. Do not treat a small difference
+      in a rate as meaningful without considering the underlying opportunity
+      count and practical business relevance.</p>\r
+
+      </small>"
+    languageId: markdown
+  - kind: 2
+    value: "-- Total completed opportunities\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Number of won opportunities\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Number of lost opportunities\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Historical win rate\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Historical win rate\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Average and median completed sales-cycle duration\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Average and median completed sales-cycle duration by outcome\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Opportunity volume and win rate for at least one business dimension\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Product mix\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Total opportunity revenue, won revenue and lost revenue\r
+
+      -- Your query here.\r
+
+      \r
+
+      -- Average won opportunity value\r
+
+      -- Your query here."
+    languageId: oracle-sql
+  - kind: 1
+    value: "<small>\r
+
+      <p><b>Diagnostic analysis</b><br>\r
+
+      Select <b>two analytical themes</b> and create <b>three</b> diagnostic
+      visualizations.</b></p>\r
+
+      <p><b>Possible themes include:</b></p>\r
+
+      <table>\r
+
+      \  <thead>\r
+
+      \    <tr>\r
+
+      \      <th>Theme</th>\r
+
+      \      <th>Example dimensions</th>\r
+
+      \    </tr>\r
+
+      \  </thead>\r
+
+      \  <tbody>\r
+
+      \    <tr>\r
+
+      \      <td>Customer/account</td>\r
+
+      \      <td>Industry, account annual-revenue band, customer region,
+      country</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>Opportunity</td>\r
+
+      \      <td>Opportunity type, completed sales-cycle duration, push
+      count</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>Sales organization</td>\r
+
+      \      <td>Owner, team, business unit, sales-owner region</td>\r
+
+      \    </tr>\r
+
+      \    <tr>\r
+
+      \      <td>Product</td>\r
+
+      \      <td>Product presence, product mix, number of products, total
+      quantity</td>\r
+
+      \    </tr>\r
+
+      \  </tbody>\r
+
+      </table>\r
+
+      \r
+
+      <p><b>For each diagnostic analysis, include:</b></p>\r
+
+      <ol>\r
+
+      \  <li>The question being investigated</li>\r
+
+      \  <li>The relevant KPI or comparison</li>\r
+
+      \  <li>A clear visualization or table</li>\r
+
+      \  <li>An interpretation of the finding(s)</li>\r
+
+      </ol>\r
+
+      \r
+
+      <p><b>Analytical expectations</b><br>Your analysis should distinguish
+      between:</p>\r
+
+      <ul>\r
+
+      \  <li>What happened historically</li>\r
+
+      \  <li>Where outcomes differed</li>\r
+
+      \  <li>What the data does not establish</li>\r
+
+      \  <li>What leadership should investigate next</li>\r
+
+      </ul>\r
+
+      <p>Strong analysis does not simply report the highest or lowest number. It
+      explains whether the difference is meaningful, what the comparison
+      represents, and how the finding could inform a business decision.</p>\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Diagnostic analysis #1</b>\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Question:</b> [The question you are exploring.]<br>\r
+
+      <b>Relevant KPI or comparison:</b> [The relevant KPI(s) or comparison(s)
+      being used or made for this diagnostic analysis.]<br>\r
+
+      <b>Tableau workbook sheet name(s):</b> [Insert the Tableau workbook sheet
+      name(s) associated with the analysis.]<br>\r
+
+      <b>Key finding:</b> [State the result shown by the analysis. Include the
+      relevant value, count, or comparison.]<br>\r
+
+      <b>Interpretation:</b> [Explain what the result means for sales leadership
+      and note any important limitation.]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Diagnostic analysis #2</b>\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Question:</b> [The question you are exploring.]<br>\r
+
+      <b>Relevant KPI or comparison:</b> [The relevant KPI(s) or comparison(s)
+      being used or made for this diagnostic analysis.]<br>\r
+
+      <b>Tableau workbook sheet name(s):</b> [Insert the Tableau workbook sheet
+      name(s) associated with the analysis.]<br>\r
+
+      <b>Key finding:</b> [State the result shown by the analysis. Include the
+      relevant value, count, or comparison.]<br>\r
+
+      <b>Interpretation:</b> [Explain what the result means for sales leadership
+      and note any important limitation.]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "#### **R - Report the results**\r
+
+      <small>\r
+
+      Use evidence from your baseline and diagnostic analyses to explain what
+      sales leadership should investigate, monitor, or improve. Your conclusions
+      must be supported by results shown earlier in this notebook.\r
+
+      \r
+
+      Complete the executive summary, three recommendations, and limitation
+      statement below. Recommendations must be feasible, evidence-based, and
+      limited to historical findings. Do not recommend which individual live
+      opportunities to prioritize.\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Executive summary</b><br>\r
+
+      [Write a concise, evidence-based response to the primary business
+      question.]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Recommendation 1</b><br>\r
+
+      <b>Finding:</b> [Finding]<br>\r
+
+      <b>Evidence:</b> [Metric, comparison, and value]<br>\r
+
+      <b>Recommended action:</b> [Feasible next step]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Recommendation 2</b><br>\r
+
+      <b>Finding:</b> [Finding]<br>\r
+
+      <b>Evidence:</b> [Metric, comparison, and value]<br>\r
+
+      <b>Recommended action:</b> [Feasible next step]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>Recommendation 3</b><br>\r
+
+      <b>Finding:</b> [Finding]<br>\r
+
+      <b>Evidence:</b> [Metric, comparison, and value]<br>\r
+
+      <b>Recommended action:</b> [Feasible next step]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: "<small>\r
+
+      <b>What the data does not establish</b><br>\r
+
+      [State one material limitation or alternative explanation.]\r
+
+      </small>"
+    languageId: markdown
+  - kind: 1
+    value: <small><b>Submission reminder:</b> Submit your Tableau workbook with the
+      corresponding worksheets and visualizations developed for this project. It
+      must contain the sheets with identical names provided by you your
+      submission. The Tableau file must be a packaged workbook (i.e., .twbx).
+      Additionally, include this SQL notebook file with its original extension
+      (i.e., .sqlnb)</small>
+    languageId: markdown
+  - kind: 1
+    value: "#### Grading\r
+
+      \r
+
+      | Component | Points |\r
+
+      | --- | ---: |\r
+
+      | S - Specify | 2 |\r
+
+      | O - Obtain | 5 |\r
+
+      | A - Analyze | 4 |\r
+
+      | R - Report | 4 |\r
+
+      | **Total** | **15** |"
+    languageId: markdown
